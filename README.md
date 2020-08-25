@@ -1,1 +1,1 @@
-# katibu-api
+# Starter Template

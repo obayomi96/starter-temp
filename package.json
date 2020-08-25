@@ -1,7 +1,7 @@
 {
   "name": "katibu-api",
   "version": "1.0.0",
-  "description": "Api for Katibu",
+  "description": "Nodejs starter template",
   "main": "server.js",
   "scripts": {
     "start": "node build/server.js",

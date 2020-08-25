@@ -1,0 +1,71 @@
+{
+  "name": "katibu-api",
+  "version": "1.0.0",
+  "description": "Api for Katibu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node build/server.js",
+    "dev": "set DEBUG=dev && nodemon --exec babel-node src/server.js",
+    "build": "yarn clean && babel -d ./build ./src --ignore '**/*.spec.js'",
+    "clean": "rm -rf build && mkdir build",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint --fix --ext .js .",
+    "format": "prettier --write src/*.(js)",
+    "precommit": "lint-staged",
+    "migrate": "yarn sequelize db:migrate",
+    "migrate:undo": "yarn sequelize db:migrate:undo:all",
+    "migrate:undo:prev": "yarn sequelize db:migrate:undo",
+    "seed": "yarn sequelize db:seed:all",
+    "seed:undo": "yarn sequelize db:seed:undo",
+    "generate:model": "yarn sequelize model:generate"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "faker": "^5.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.3.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/register": "^7.10.5",
+    "@babel/runtime": "^7.11.2",
+    "babel-loader": "^8.1.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.12",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.0"
+  }
+}
